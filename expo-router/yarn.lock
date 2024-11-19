@@ -1147,13 +1147,15 @@
     find-up "^5.0.0"
     strip-json-comments "^3.1.1"
 
-"@esbuild/win32-x64@0.21.5":
+"@esbuild/linux-x64@0.21.5":
   version "0.21.5"
-  resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz"
-  integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
+  resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.21.5.tgz"
+  integrity sha512-1rYdTpyv03iycF1+BhzrzQJCdOuAOtaqHTWJZCWvijKD2N5Xu0TtVC8/+1faWqcP9iBCWOmjmhoH94dH82BxPQ==
 
-"@esbuild/win32-x64@0.24.0":
+"@esbuild/linux-x64@0.24.0":
   version "0.24.0"
+  resolved "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.24.0.tgz"
+  integrity sha512-vbutsFqQ+foy3wSSbmjBXXIJ6PL3scghJoM8zCL142cGaZKAdCZHyf+Bpu/MmX9zT9Q0zFBVKb36Ma5Fzfa8xA==
 
 "@expo/bunyan@^4.0.0":
   version "4.0.1"
@@ -1762,9 +1764,6 @@
     micromatch "^4.0.5"
     napi-wasm "^1.1.0"
 
-"@parcel/watcher-win32-x64@2.4.1":
-  version "2.4.1"
-
 "@parcel/watcher@^2.4.1":
   version "2.4.1"
   dependencies:
@@ -2112,9 +2111,6 @@
 "@repeaterjs/repeater@^3.0.4":
   version "3.0.6"
 
-"@rollup/rollup-win32-x64-msvc@4.24.0":
-  version "4.24.0"
-
 "@segment/loosely-validate-event@^2.0.0":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@segment/loosely-validate-event/-/loosely-validate-event-2.0.0.tgz"
@@ -2135,9 +2131,6 @@
   version "10.3.0"
   dependencies:
     "@sinonjs/commons" "^3.0.0"
-
-"@swc/core-win32-x64-msvc@1.7.26":
-  version "1.7.26"
 
 "@swc/core@^1.5.25", "@swc/core@^1.7.21":
   version "1.7.26"
@@ -5922,18 +5915,35 @@ lighthouse-logger@^1.0.0:
     debug "^2.6.9"
     marky "^1.2.2"
 
-lightningcss-win32-x64-msvc@1.22.0:
+lightningcss-linux-x64-gnu@1.22.0:
   version "1.22.0"
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.22.0.tgz"
+  integrity sha512-grdrhYGRi2KrR+bsXJVI0myRADqyA7ekprGxiuK5QRNkv7kj3Yq1fERDNyzZvjisHwKUi29sYMClscbtl+/Zpw==
 
-lightningcss-win32-x64-msvc@1.27.0:
+lightningcss-linux-x64-gnu@1.27.0:
   version "1.27.0"
-  resolved "https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.27.0.tgz"
-  integrity sha512-/OJLj94Zm/waZShL8nB5jsNj3CfNATLCTyFxZyouilfTmSoLDX7VlVAmhPHoZWVFp4vdmoiEbPEYC8HID3m6yw==
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.27.0.tgz"
+  integrity sha512-Dk/jovSI7qqhJDiUibvaikNKI2x6kWPN79AQiD/E/KeQWMjdGe9kw51RAgoWFDi0coP4jinaH14Nrt/J8z3U4A==
 
-lightningcss-win32-x64-msvc@1.28.1:
+lightningcss-linux-x64-gnu@1.28.1:
   version "1.28.1"
-  resolved "https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.28.1.tgz"
-  integrity sha512-ZPQtvx+uQBzrSdHH8p4H3M9Alue+x369TPZAA3b4K3d92FPhpZCuBG04+HQzspam9sVeID9mI6f3VRAs2ezaEA==
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.28.1.tgz"
+  integrity sha512-7vWDISaMUn+oo2TwRdf2hl/BLdPxvywv9JKEqNZB/0K7bXwV4XE9wN/C2sAp1gGuh6QBA8lpjF4JIPt3HNlCHA==
+
+lightningcss-linux-x64-musl@1.22.0:
+  version "1.22.0"
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.22.0.tgz"
+  integrity sha512-t5f90X+iQUtIyR56oXIHMBUyQFX/zwmPt72E6Dane3P8KNGlkijTg2I75XVQS860gNoEFzV7Mm5ArRRA7u5CAQ==
+
+lightningcss-linux-x64-musl@1.27.0:
+  version "1.27.0"
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.27.0.tgz"
+  integrity sha512-QKjTxXm8A9s6v9Tg3Fk0gscCQA1t/HMoF7Woy1u68wCk5kS4fR+q3vXa1p3++REW784cRAtkYKrPy6JKibrEZA==
+
+lightningcss-linux-x64-musl@1.28.1:
+  version "1.28.1"
+  resolved "https://registry.npmjs.org/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.28.1.tgz"
+  integrity sha512-IHCu9tVGP+x5BCpA2rF3D04DBokcBza/a8AuHQU+1AiMKubuMegPwcL7RatBgK4ztFHeYnnD5NdhwhRfYMAtNA==
 
 lightningcss@^1.21.0:
   version "1.28.1"

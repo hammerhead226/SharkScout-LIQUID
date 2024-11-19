@@ -7,7 +7,7 @@ export default function MatchScoutingScreen() {
     <View flex={1} alignItems="center" justifyContent="center" bg="$background">
         <ScrollView>
 
-            <H4>SharkScout</H4>
+        <H4 style={{ textAlign: 'center', marginTop: 20 }}>SharkScout</H4>
 
             <YStack
             width={300}
@@ -18,6 +18,7 @@ export default function MatchScoutingScreen() {
             padding="$2"
             >
             <NameInput size="$4" />
+            <QualNum size="$4" />
             </YStack>
         </ScrollView>
     </View>
@@ -29,6 +30,15 @@ function NameInput(props: { size: SizeTokens }) {
     return (
       <XStack alignItems="center" space="$2">
         <Input flex={1} size={props.size} placeholder={`Name`} />
+        <Button size={props.size} onPress={() => Keyboard.dismiss()}>Go</Button>
+      </XStack>
+    )
+  }
+
+  function QualNum(props: { size: SizeTokens }) {
+    return (
+      <XStack alignItems="center" space="$2">
+        <Input flex={1} size={props.size} placeholder={`Qual Number`} />
         <Button size={props.size} onPress={() => Keyboard.dismiss()}>Go</Button>
       </XStack>
     )

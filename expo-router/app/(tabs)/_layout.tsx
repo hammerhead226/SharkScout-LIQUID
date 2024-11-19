@@ -18,14 +18,14 @@ export default function TabLayout() {
           borderBottomColor: theme.borderColor.val,
         },
         headerTintColor: theme.color.val,
+        headerTitleAlign: 'center', // Center the title on the X-axis
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home Screen',
+          title: 'Home',
           tabBarIcon: ({ color }) => <Atom color={color} />,
-
         }}
       />
       <Tabs.Screen
@@ -34,7 +34,6 @@ export default function TabLayout() {
           title: 'Match Scouting',
           tabBarIcon: ({ color }) => <AudioWaveform color={color} />,
         }}
-        
       />
     </Tabs>
   )
