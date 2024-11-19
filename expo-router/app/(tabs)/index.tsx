@@ -53,12 +53,3 @@ export default function TabOneScreen() {
     </YStack>
   )
 }
-
-function NameInput(props: { size: SizeTokens }) {
-  return (
-    <XStack alignItems="center" space="$2">
-      <Input flex={1} size={props.size} placeholder={`Name`} />
-      <Button size={props.size} onPress={() => Keyboard.dismiss()}>Go</Button>
-    </XStack>
-  )
-}
