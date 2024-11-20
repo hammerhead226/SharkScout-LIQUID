@@ -1,8 +1,8 @@
 import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Label, Adapt, Sheet } from 'tamagui'
 import type { SizeTokens } from 'tamagui'
-import { Keyboard } from 'react-native'
+import { Keyboard, Platform } from 'react-native'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { LinearGradient } from 'tamagui/linear-gradient'
 
 export default function MatchScoutingScreen() {
@@ -13,6 +13,15 @@ export default function MatchScoutingScreen() {
       setNames([...names, name.trim()])
     }
   }
+
+  useEffect(() => {
+    if (Platform.OS === 'ios') {
+      console.log('Running on iOS')
+      console.log('Names:', names)
+    } else {
+      console.log('Running on another platform')
+    }
+  }, [names])
 
   return (
     <View flex={1} alignItems="center" justifyContent="center" bg="$background">
@@ -37,6 +46,14 @@ export default function MatchScoutingScreen() {
 
 function NameSelect(props: { size: SizeTokens, names: string[] }) {
   const [selectedName, setSelectedName] = useState(props.names[0])
+
+  useEffect(() => {
+    if (Platform.OS === 'ios') {
+      console.log('Names on iOS:', props.names)
+    } else {
+      console.log('Names on another platform:', props.names)
+    }
+  }, [props.names])
 
   return (
     <View alignItems="center">
