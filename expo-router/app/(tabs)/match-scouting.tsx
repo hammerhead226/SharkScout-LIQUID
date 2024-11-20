@@ -1,4 +1,4 @@
-import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Label } from 'tamagui'
+import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Label, Adapt, Sheet } from 'tamagui'
 import type { SizeTokens } from 'tamagui'
 import { Keyboard } from 'react-native'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
@@ -45,7 +45,28 @@ function NameSelect(props: { size: SizeTokens, names: string[] }) {
           <Select.Value placeholder="Select Name">{selectedName}</Select.Value>
         </Select.Trigger>
 
-        
+        <Adapt when="sm" platform="touch">
+          <Sheet
+            dismissOnSnapToBottom
+            animationConfig={{
+              type: 'spring',
+              damping: 20,
+              mass: 1.2,
+              stiffness: 250,
+            }}
+          >
+            <Sheet.Frame>
+              <Sheet.ScrollView>
+                <Adapt.Contents />
+              </Sheet.ScrollView>
+            </Sheet.Frame>
+            <Sheet.Overlay
+            animation="lazy"
+            enterStyle={{ opacity: 0 }}
+            exitStyle={{ opacity: 0 }}
+          />
+          </Sheet>
+        </Adapt>
 
         <Select.Content zIndex={200000}>
           <Select.ScrollUpButton
