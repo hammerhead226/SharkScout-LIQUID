@@ -1,8 +1,9 @@
-import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Adapt, Sheet, LinearGradient, Popover, Label } from 'tamagui'
+import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Adapt, Sheet, Popover, Label } from 'tamagui'
 import type { SizeTokens } from 'tamagui'
 import { Keyboard } from 'react-native'
 import { Check, ChevronDown, ChevronUp, ChevronRight } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
+import { LinearGradient } from 'tamagui/linear-gradient'
 
 export default function MatchScoutingScreen() {
   const [names, setNames] = useState(['Pranav', 'Reajul', 'Bhavna'])
@@ -94,7 +95,7 @@ function NameSelect(props: { size: SizeTokens, names: string[] }) {
             <Select.Group>
               <Select.Label>Names</Select.Label>
               {props.names.map((name, i) => (
-                <Select.Item key={i} value={name}>
+                <Select.Item key={i} value={name} index={i}>
                   <Select.ItemText>{name}</Select.ItemText>
                   <Select.ItemIndicator marginLeft="auto">
                     <Check size={16} />
