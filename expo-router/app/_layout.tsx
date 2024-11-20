@@ -63,7 +63,7 @@ function RootLayoutNav() {
           }}
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name="modal"
           options={{
             title: 'Tamagui + Expo',
@@ -75,7 +75,7 @@ function RootLayoutNav() {
               backgroundColor: theme.background.val,
             },
           }}
-        />
+        /> */}
       </Stack>
     </ThemeProvider>
   )

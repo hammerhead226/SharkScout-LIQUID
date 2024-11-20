@@ -1,7 +1,7 @@
-import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Adapt, Sheet, Popover, Label } from 'tamagui'
+import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Label } from 'tamagui'
 import type { SizeTokens } from 'tamagui'
 import { Keyboard } from 'react-native'
-import { Check, ChevronDown, ChevronUp, ChevronRight } from '@tamagui/lucide-icons'
+import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
 import { LinearGradient } from 'tamagui/linear-gradient'
 
@@ -17,7 +17,6 @@ export default function MatchScoutingScreen() {
   return (
     <View flex={1} alignItems="center" justifyContent="center" bg="$background">
       <ScrollView>
-        <H4 style={{ textAlign: 'center', marginTop: 20 }}>SharkScout</H4>
         <YStack
           width={300}
           minHeight={250}
@@ -28,7 +27,7 @@ export default function MatchScoutingScreen() {
         >
           <H5 style={{ textAlign: 'center' }}>Name Select</H5>
           <NameSelect size="$4" names={names} />
-          <AddNamePopover addName={addName} />
+          <AddNameDropdown addName={addName} />
           <QualNum size="$4" />
         </YStack>
       </ScrollView>
@@ -43,33 +42,10 @@ function NameSelect(props: { size: SizeTokens, names: string[] }) {
     <View alignItems="center">
       <Select value={selectedName} onValueChange={setSelectedName} disablePreventBodyScroll>
         <Select.Trigger width={220} iconAfter={ChevronDown}>
-          <Select.Value placeholder="Select Name" />
+          <Select.Value placeholder="Select Name">{selectedName}</Select.Value>
         </Select.Trigger>
 
-        <Adapt when="sm" platform="touch">
-          <Sheet
-            native
-            modal
-            dismissOnSnapToBottom
-            animationConfig={{
-              type: 'spring',
-              damping: 20,
-              mass: 1.2,
-              stiffness: 250,
-            }}
-          >
-            <Sheet.Frame>
-              <Sheet.ScrollView>
-                <Adapt.Contents />
-              </Sheet.ScrollView>
-            </Sheet.Frame>
-            <Sheet.Overlay
-              animation="lazy"
-              enterStyle={{ opacity: 0 }}
-              exitStyle={{ opacity: 0 }}
-            />
-          </Sheet>
-        </Adapt>
+        
 
         <Select.Content zIndex={200000}>
           <Select.ScrollUpButton
@@ -138,7 +114,7 @@ function QualNum(props: { size: SizeTokens }) {
   )
 }
 
-function AddNamePopover({ addName }: { addName: (name: string) => void }) {
+function AddNameDropdown({ addName }: { addName: (name: string) => void }) {
   const [name, setName] = useState('')
 
   const handleAddName = () => {
@@ -147,49 +123,11 @@ function AddNamePopover({ addName }: { addName: (name: string) => void }) {
   }
 
   return (
-    <Popover size="$5" allowFlip placement="right">
-      <Popover.Trigger asChild>
-        <Button icon={ChevronRight}>Add Name</Button>
-      </Popover.Trigger>
-
-      <Popover.Content
-        borderWidth={1}
-        borderColor="$borderColor"
-        enterStyle={{ y: -10, opacity: 0 }}
-        exitStyle={{ y: -10, opacity: 0 }}
-        elevate
-        animation={[
-          'quick',
-          {
-            opacity: {
-              overshootClamping: true,
-            },
-          },
-        ]}
-      >
-        <Popover.Arrow borderWidth={1} borderColor="$borderColor" />
-
-        <YStack gap="$3" padding="$4">
-          <XStack gap="$3">
-            <Label size="$3" htmlFor="name-input">
-              Name
-            </Label>
-            <Input
-              f={1}
-              size="$3"
-              id="name-input"
-              value={name}
-              onChangeText={setName}
-            />
-          </XStack>
-
-          <Popover.Close asChild>
-            <Button size="$3" onPress={handleAddName}>
-              Go
-            </Button>
-          </Popover.Close>
-        </YStack>
-      </Popover.Content>
-    </Popover>
+    <View alignItems="center">
+      <XStack alignItems="center" space="$2">
+        <Input flex={1} size="$4" placeholder="Add Name" value={name} onChangeText={setName} />
+        <Button size="$4" onPress={handleAddName}>Add</Button>
+      </XStack>
+    </View>
   )
 }
