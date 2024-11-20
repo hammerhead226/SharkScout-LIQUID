@@ -35,6 +35,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <AudioWaveform color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="terminal-panel"
+        options={{
+          title: 'Terminal Panel',
+          tabBarIcon: ({ color }) => <AudioWaveform color={color} />,
+        }}
+      />
     </Tabs>
   )
 }
