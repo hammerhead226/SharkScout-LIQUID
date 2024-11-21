@@ -15,20 +15,10 @@ export default function TerminalPanelScreen() {
                 margin="$3"
                 padding="$2"
                 >
-                <H5 style={{ textAlign: 'center', marginTop: 0 }}>TBA KEY INPUT</H5>
-                <TBAKey size="$4" />            
+                <H5 style={{ textAlign: 'center', marginTop: 0 }}>PAGE IN PROGRESS</H5>        
                 </YStack>
             </XStack>
         </ScrollView>
     </View>
   )
 }
-
-function TBAKey(props: { size: SizeTokens }) {
-    return (
-      <XStack alignItems="center" space="$2">
-        <Input flex={1} size={props.size} placeholder={`TBA KEY`} />
-        <Button size={props.size} onPress={() => Keyboard.dismiss()}>Go</Button>
-      </XStack>
-    )
-  }

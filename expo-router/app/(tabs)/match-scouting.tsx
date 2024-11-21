@@ -1,12 +1,15 @@
-import { H4, H5, Input, XStack, YStack, Button, View, ScrollView, Select, Label, Adapt, Sheet } from 'tamagui'
+import { H4, H5, H6, Separator, Input, XStack, YStack, Button, View, ScrollView, Select, Label, Adapt, Sheet, useTheme } from 'tamagui'
 import type { SizeTokens } from 'tamagui'
-import { Keyboard, Platform } from 'react-native'
-import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
+import { Keyboard, Platform, Text } from 'react-native'
+import { Check, ChevronDown, ChevronUp, X } from '@tamagui/lucide-icons'
 import React, { useState, useEffect } from 'react'
 import { LinearGradient } from 'tamagui/linear-gradient'
+import { ToggleGroup } from 'tamagui'
+import { AlignCenter, AlignLeft, AlignRight } from '@tamagui/lucide-icons'
 
 export default function MatchScoutingScreen() {
   const [names, setNames] = useState(['Pranav', 'Reajul', 'Bhavna'])
+  const theme = useTheme()
 
   const addName = (name: string) => {
     if (name.trim()) {
@@ -34,10 +37,17 @@ export default function MatchScoutingScreen() {
           margin="$3"
           padding="$2"
         >
-          <H5 style={{ textAlign: 'center' }}>Name Select</H5>
+          <H6 style={{ textAlign: 'center' }}><Text style={{ color: theme.color.val }}>Name Select</Text></H6>
           <NameSelect size="$4" names={names} />
           <AddNameDropdown addName={addName} />
+          <Separator marginVertical={10} borderColor="$color" width={'$5'} alignSelf="center"/> 
+          <H6 style={{ textAlign: 'center' }}><Text style={{ color: theme.color.val }}>Alliance Select</Text></H6>
           <QualNum size="$4" />
+          <XStack alignItems="center" justifyContent="center" marginVertical={10}>
+            <YStack alignItems="center" space="$6">
+              <ToggleGroupComponent type="single" size="$3" orientation="horizontal" />
+            </YStack>
+          </XStack>
         </YStack>
       </ScrollView>
     </View>
@@ -46,6 +56,7 @@ export default function MatchScoutingScreen() {
 
 function NameSelect(props: { size: SizeTokens, names: string[] }) {
   const [selectedName, setSelectedName] = useState(props.names[0])
+  const theme = useTheme()
 
   useEffect(() => {
     if (Platform.OS === 'ios') {
@@ -59,7 +70,7 @@ function NameSelect(props: { size: SizeTokens, names: string[] }) {
     <View alignItems="center">
       <Select value={selectedName} onValueChange={setSelectedName} disablePreventBodyScroll>
         <Select.Trigger width={220} iconAfter={ChevronDown}>
-          <Select.Value placeholder="Select Name">{selectedName}</Select.Value>
+          <Select.Value placeholder="Select Name"><Text style={{ color: theme.color.val }}>{selectedName}</Text></Select.Value>
         </Select.Trigger>
 
         <Adapt when="sm" platform="touch">
@@ -107,10 +118,10 @@ function NameSelect(props: { size: SizeTokens, names: string[] }) {
 
           <Select.Viewport minWidth={200}>
             <Select.Group>
-              <Select.Label>Names</Select.Label>
+              <Select.Label><Text style={{ color: theme.color.val }}>Names</Text></Select.Label>
               {props.names.map((name, i) => (
                 <Select.Item key={i} value={name} index={i}>
-                  <Select.ItemText>{name}</Select.ItemText>
+                  <Select.ItemText><Text style={{ color: theme.color.val }}>{name}</Text></Select.ItemText>
                   <Select.ItemIndicator marginLeft="auto">
                     <Check size={16} />
                   </Select.ItemIndicator>
@@ -144,16 +155,18 @@ function NameSelect(props: { size: SizeTokens, names: string[] }) {
 }
 
 function QualNum(props: { size: SizeTokens }) {
+  const theme = useTheme()
   return (
     <XStack alignItems="center" space="$2">
       <Input flex={1} size={props.size} placeholder={`Qual Number`} />
-      <Button size={props.size} onPress={() => Keyboard.dismiss()}>Go</Button>
+      <Button size={props.size} onPress={() => Keyboard.dismiss()}><Text style={{ color: theme.color.val }}>Go</Text></Button>
     </XStack>
   )
 }
 
 function AddNameDropdown({ addName }: { addName: (name: string) => void }) {
   const [name, setName] = useState('')
+  const theme = useTheme()
 
   const handleAddName = () => {
     addName(name)
@@ -161,11 +174,67 @@ function AddNameDropdown({ addName }: { addName: (name: string) => void }) {
   }
 
   return (
-    <View alignItems="center">
-      <XStack alignItems="center" space="$2">
+    <View alignItems="center" width="100%">
+      <XStack alignItems="center" space="$2" width="100%" paddingHorizontal="$2">
         <Input flex={1} size="$4" placeholder="Add Name" value={name} onChangeText={setName} />
-        <Button size="$4" onPress={handleAddName}>Add</Button>
+        <Button size="$4" onPress={handleAddName}><Text style={{ color: theme.color.val }}>Add</Text></Button>
       </XStack>
     </View>
+  )
+}
+
+function ToggleGroupComponent(props: {
+  size: SizeTokens
+  type: 'single' | 'multiple'
+  orientation: 'vertical' | 'horizontal'
+}) {
+  const id = `switch-${props.size.toString().slice(1)}-${props.type}`
+  const theme = useTheme()
+  return (
+    <YStack alignItems="center" justifyContent="center" space="$4">
+      <ToggleGroup
+        orientation="horizontal"
+        id={id}
+        type="single"
+        size={props.size}
+        disableDeactivation={true}
+      >
+        <YStack alignItems="center" justifyContent="center" space="$4">
+          <XStack
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+            space="$4"
+          >
+            <ToggleGroup.Item value="blue1" aria-label="Blue 1">
+              <Text style={{ color: theme.color.val }}>Blue 1</Text>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value="blue2" aria-label="Blue 2">
+              <Text style={{ color: theme.color.val }}>Blue 2</Text>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value="blue3" aria-label="Blue 3">
+              <Text style={{ color: theme.color.val }}>Blue 3</Text>
+            </ToggleGroup.Item>
+          </XStack>
+
+          <XStack
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+            space="$4"
+          >
+            <ToggleGroup.Item value="red1" aria-label="Red 1">
+              <Text style={{ color: theme.color.val }}>Red 1</Text>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value="red2" aria-label="Red 2">
+              <Text style={{ color: theme.color.val }}>Red 2</Text>
+            </ToggleGroup.Item>
+            <ToggleGroup.Item value="red3" aria-label="Red 3">
+              <Text style={{ color: theme.color.val }}>Red 3</Text>
+            </ToggleGroup.Item>
+          </XStack>
+        </YStack>
+      </ToggleGroup>
+    </YStack>
   )
 }
