@@ -1,4 +1,4 @@
-import { H4, H5, H6, Separator, Input, XStack, YStack, Button, View, ScrollView, Select, Label, Adapt, Sheet, useTheme } from 'tamagui'
+import { H4, H5, H6, Circle, Square, Separator, Input, XStack, YStack, Button, View, ScrollView, Select, Label, Adapt, Sheet, useTheme } from 'tamagui'
 import type { SizeTokens } from 'tamagui'
 import { Keyboard, Platform, Text } from 'react-native'
 import { Check, ChevronDown, ChevronUp, X } from '@tamagui/lucide-icons'
@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react'
 import { LinearGradient } from 'tamagui/linear-gradient'
 import { ToggleGroup } from 'tamagui'
 import { AlignCenter, AlignLeft, AlignRight } from '@tamagui/lucide-icons'
+import { useRouter } from 'expo-router';
 
 export default function MatchScoutingScreen() {
   const [names, setNames] = useState(['Pranav', 'Reajul', 'Bhavna'])
@@ -43,12 +44,33 @@ export default function MatchScoutingScreen() {
           <Separator marginVertical={10} borderColor="$color" width={'$5'} alignSelf="center"/> 
           <H6 style={{ textAlign: 'center' }}><Text style={{ color: theme.color.val }}>Alliance Select</Text></H6>
           <QualNum size="$4" />
-          <XStack alignItems="center" justifyContent="center" marginVertical={10}>
+          {/* <XStack alignItems="center" justifyContent="center" marginVertical={10}>
             <YStack alignItems="center" space="$6">
               <ToggleGroupComponent type="single" size="$3" orientation="horizontal" />
             </YStack>
+          </XStack> */}
+          <XStack padding="$2" space="$4" alignItems="center" justifyContent="center">
+            <View
+              width={220}
+              height={40}
+              backgroundColor="rgba(106, 13, 173, 0.2)" // Matte purple with 20% opacity
+              borderColor="rgba(90, 12, 154, 0.2)" // Slightly darker purple with 20% opacity
+              borderWidth={1}
+              borderRadius={4}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text style={{ color: theme.color.val }}>Alliance Set</Text>
+            </View>
           </XStack>
         </YStack>
+
+        <Separator marginVertical={0} borderColor="$color" width={'$5'} alignSelf="center"/>
+        <XStack alignItems="center" justifyContent="center" marginTop="$4">
+          <Button themeInverse size="$4" width={200}>
+            NEXT =>
+          </Button>
+        </XStack>
       </ScrollView>
     </View>
   )
