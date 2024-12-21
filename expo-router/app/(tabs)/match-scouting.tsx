@@ -7,10 +7,16 @@ import { LinearGradient } from 'tamagui/linear-gradient'
 import { ToggleGroup } from 'tamagui'
 import { AlignCenter, AlignLeft, AlignRight } from '@tamagui/lucide-icons'
 import { useRouter } from 'expo-router';
+import { useStore } from './../../zustand/hooks'
+
 
 export default function MatchScoutingScreen() {
   const [names, setNames] = useState(['Pranav', 'Reajul', 'Bhavna'])
   const theme = useTheme()
+
+  const { scouter_name, alliance, driver_station, match_number, team_number, set_match_number, set_team_number }: any = useStore()
+
+
 
   const addName = (name: string) => {
     if (name.trim()) {
@@ -38,18 +44,82 @@ export default function MatchScoutingScreen() {
           margin="$3"
           padding="$2"
         >
-          <H6 style={{ textAlign: 'center' }}><Text style={{ color: theme.color.val }}>Name Select</Text></H6>
+          {/* <H6 style={{ textAlign: 'center' }}><Text style={{ color: theme.color.val }}>Name Select</Text></H6>
           <NameSelect size="$4" names={names} />
-          <AddNameDropdown addName={addName} />
-          <Separator marginVertical={10} borderColor="$color" width={'$5'} alignSelf="center"/> 
-          <H6 style={{ textAlign: 'center' }}><Text style={{ color: theme.color.val }}>Alliance Select</Text></H6>
-          <QualNum size="$4" />
+          <AddNameDropdown addName={addName} /> */}
+          {/* <Separator marginVertical={10} borderColor="$color" width={'$5'} alignSelf="center"/>  */}
+          {/* <H6 style={{ textAlign: 'center' }}><Text style={{ color: theme.color.val }}>Alliance Select</Text></H6> */}
+          
+          {/* Terminal Information */}
+          <YStack bg={alliance === "red" ? "$red3" : "$blue3"} borderRadius="$4" borderStyle="dashed" borderWidth={2} borderColor={alliance === "red" ? "$red10" : "$blue10"} padding="$4" marginBottom="$4">
+            <H5 style={{ textAlign: 'center' }} fontWeight="bold">Terminal Information</H5>
+            <Separator paddingTop="$2" borderColor="$color" width={'$5'} alignSelf="center"/>
+
+
+            <YStack paddingTop="$2">
+              <XStack justifyContent="space-between">
+                <H6 >Scouter Name:</H6>
+                <H6 fontWeight="bold">{scouter_name}</H6>
+              </XStack>
+              <XStack justifyContent="space-between">
+                <H6 >Alliance:</H6>
+                <H6 fontWeight="bold">{alliance}</H6>
+              </XStack>
+              <XStack justifyContent="space-between">
+                <H6 >Driver Station:</H6>
+                <H6 fontWeight="bold">{driver_station}</H6>
+              </XStack>
+            </YStack>
+          </YStack>
+          
+          {/* Match Num and Team Num */}
+          <YStack gap="$2">
+            <H5 style={{ textAlign: 'center' }} fontWeight="bold">Match Information</H5>
+            <Separator paddingTop="$2" borderColor="$color" width={'$5'} alignSelf="center"/>
+
+            <XStack justifyContent="space-between" alignItems="center">
+              <H6>Match #:</H6>
+              <Input
+                placeholder=""
+                keyboardType="numeric"
+                borderColor="$gray9"
+                borderWidth={1}
+                padding="$2"
+                borderRadius="$2"
+                width={100}
+                value={match_number}
+                onChangeText={(text) => set_match_number(text)}
+              />
+            </XStack>
+
+            <XStack justifyContent="space-between" alignItems="center">
+              <H6>Team #:</H6>
+              <Input
+                placeholder=""
+                keyboardType="numeric"
+                borderColor="$gray9"
+                borderWidth={1}
+                padding="$2"
+                borderRadius="$2"
+                width={100}
+                value={team_number}
+                onChangeText={(text) => set_team_number(text)}
+              />
+            </XStack>
+
+          </YStack>
+
+
+
+
+
+          {/* <QualNum size="$4" /> */}
           {/* <XStack alignItems="center" justifyContent="center" marginVertical={10}>
             <YStack alignItems="center" space="$6">
               <ToggleGroupComponent type="single" size="$3" orientation="horizontal" />
             </YStack>
           </XStack> */}
-          <XStack padding="$2" space="$4" alignItems="center" justifyContent="center">
+          {/* <XStack padding="$2" space="$4" alignItems="center" justifyContent="center">
             <View
               width={220}
               height={40}
@@ -62,13 +132,20 @@ export default function MatchScoutingScreen() {
             >
               <Text style={{ color: theme.color.val }}>Alliance Set</Text>
             </View>
-          </XStack>
+          </XStack> */}
         </YStack>
 
         <Separator marginVertical={0} borderColor="$color" width={'$5'} alignSelf="center"/>
+        
+        <YStack marginTop="$4">
+          {scouter_name === '' ? <H6 color={"$red10"}>ERROR: Scouter Name is required</H6> : null}
+          {match_number === '' ? <H6 color={"$red10"}>ERROR: Match Number is required</H6> : null}
+          {team_number === '' ? <H6 color={"$red10"}>ERROR: Team Number is required</H6> : null}
+        </YStack>
+
         <XStack alignItems="center" justifyContent="center" marginTop="$4">
-          <Button themeInverse size="$4" width={200}>
-            NEXT =>
+          <Button color="#FFFFFF" fontWeight="bold" disabled={match_number === '' || team_number === '' || scouter_name === ''} bg={match_number === '' || team_number === '' || scouter_name === '' ? "$gray6" : "$green9"} size="$4" width={200}>
+            START 
           </Button>
         </XStack>
       </ScrollView>
