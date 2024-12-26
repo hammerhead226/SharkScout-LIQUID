@@ -121,8 +121,6 @@ export default function TerminalPanelScreen() {
 
             <Input
               placeholder="Enter code"
-              value={scouter_name}
-              onChangeText={set_scouter_name}
               borderColor="$gray9"
               borderWidth={1}
               padding="$2"
