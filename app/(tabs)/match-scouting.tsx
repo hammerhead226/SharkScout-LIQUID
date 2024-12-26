@@ -78,7 +78,7 @@ export default function MatchScoutingScreen() {
             <Separator paddingTop="$2" borderColor="$color" width={'$5'} alignSelf="center"/>
 
             <XStack justifyContent="space-between" alignItems="center">
-              <H6>Match #:</H6>
+              <H6>Match Number:</H6>
               <Input
                 placeholder=""
                 keyboardType="numeric"
@@ -93,7 +93,7 @@ export default function MatchScoutingScreen() {
             </XStack>
 
             <XStack justifyContent="space-between" alignItems="center">
-              <H6>Team #:</H6>
+              <H6>Team Number:</H6>
               <Input
                 placeholder=""
                 keyboardType="numeric"
