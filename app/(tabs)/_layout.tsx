@@ -50,6 +50,27 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TerminalSquare color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="match-scouting-auton"
+        options={{
+          title: 'Auton Scouting Screen',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="match-scouting-tele"
+        options={{
+          title: 'Teleop Scouting Screen',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="match-scouting-end"
+        options={{
+          title: 'Endgame Scouting Screen',
+          href: null,
+        }}
+      />
     </Tabs>
   )
 }

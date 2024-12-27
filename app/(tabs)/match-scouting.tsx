@@ -7,12 +7,13 @@ import { LinearGradient } from 'tamagui/linear-gradient'
 import { ToggleGroup } from 'tamagui'
 import { AlignCenter, AlignLeft, AlignRight } from '@tamagui/lucide-icons'
 import { useRouter } from 'expo-router';
-import { useStore } from './../../zustand/hooks'
+import { useStore } from '../../zustand/hooks'
 
 
 export default function MatchScoutingScreen() {
   const [names, setNames] = useState(['Pranav', 'Reajul', 'Bhavna'])
   const theme = useTheme()
+  const router = useRouter()
 
   const { scouter_name, alliance, driver_station, match_number, team_number, set_match_number, set_team_number }: any = useStore()
 
@@ -109,10 +110,6 @@ export default function MatchScoutingScreen() {
 
           </YStack>
 
-
-
-
-
           {/* <QualNum size="$4" /> */}
           {/* <XStack alignItems="center" justifyContent="center" marginVertical={10}>
             <YStack alignItems="center" space="$6">
@@ -137,15 +134,23 @@ export default function MatchScoutingScreen() {
 
         <Separator marginVertical={0} borderColor="$color" width={'$5'} alignSelf="center"/>
         
-        <YStack marginTop="$4">
+        <YStack marginTop="$4" justifyContent='center' alignItems='center'>
           {scouter_name === '' ? <H6 color={"$red10"}>ERROR: Scouter Name is required</H6> : null}
           {match_number === '' ? <H6 color={"$red10"}>ERROR: Match Number is required</H6> : null}
           {team_number === '' ? <H6 color={"$red10"}>ERROR: Team Number is required</H6> : null}
         </YStack>
 
         <XStack alignItems="center" justifyContent="center" marginTop="$4">
-          <Button color="#FFFFFF" fontWeight="bold" disabled={match_number === '' || team_number === '' || scouter_name === ''} bg={match_number === '' || team_number === '' || scouter_name === '' ? "$gray6" : "$green9"} size="$4" width={200}>
-            START 
+          <Button
+            color="#FFFFFF"
+            fontWeight="bold"
+            disabled={match_number === '' || team_number === '' || scouter_name === ''}
+            bg={match_number === '' || team_number === '' || scouter_name === '' ? "$gray6" : "$green9"}
+            size="$4"
+            width={200}
+            onPress={() => router.push('/match-scouting-auton')}
+          >
+            START
           </Button>
         </XStack>
       </ScrollView>

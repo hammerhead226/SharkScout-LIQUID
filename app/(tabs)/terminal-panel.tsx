@@ -20,8 +20,8 @@ export default function TerminalPanelScreen() {
             paddingBottom="$4"
             bg="$background"
             borderRadius="$4"
-            maxWidth={400} // Set a maximum width
-            alignSelf="center" // Center it horizontally
+            width="100%"
+            alignSelf="center"
             borderWidth={1}
             borderColor="$gray9"
           >
@@ -60,8 +60,8 @@ export default function TerminalPanelScreen() {
             paddingRight="$4"
             paddingBottom="$4"
             borderRadius="$4"
-            maxWidth={400} // Set a maximum width
-            alignSelf="center" // Center it horizontally
+            width="100%"
+            alignSelf="center" 
             borderWidth={1}
             borderColor="$gray9"
           >
@@ -83,8 +83,8 @@ export default function TerminalPanelScreen() {
             paddingRight="$4"
             paddingBottom="$4"
             borderRadius="$4"
-            maxWidth={400} // Set a maximum width
-            alignSelf="center" // Center it horizontally
+            width="100%"
+            alignSelf="center"
             borderWidth={1}
             borderColor="$gray9"
           >
@@ -100,7 +100,7 @@ export default function TerminalPanelScreen() {
               padding="$2"
               borderRadius="$2"
               marginTop="$2"
-              width={300} // Set the desired width
+              width="100%" 
             />
           </YStack>
 
@@ -111,8 +111,8 @@ export default function TerminalPanelScreen() {
             paddingRight="$4"
             paddingBottom="$4"
             borderRadius="$4"
-            maxWidth={400} // Set a maximum width
-            alignSelf="center" // Center it horizontally
+            width="100%" 
+            alignSelf="center" 
             borderWidth={1}
             borderColor="$gray9"
           >
@@ -126,7 +126,7 @@ export default function TerminalPanelScreen() {
               padding="$2"
               borderRadius="$2"
               marginTop="$2"
-              width={300} // Set the desired width
+              width="100%" 
             />
 
               <Button
