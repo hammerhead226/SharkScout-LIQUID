@@ -3,11 +3,14 @@ import type { SizeTokens } from 'tamagui'
 import { Keyboard } from 'react-native'
 import { useState } from 'react'
 import { useStore } from './../../zustand/hooks'
+import Counter from 'components/Counter'
 
 export default function TerminalPanelScreen() {
   const {scouter_name, set_scouter_name, alliance, set_alliance, driver_station, set_driver_station}: any = useStore()
   const theme = useTheme()
 
+
+  const [test, set_test] = useState(0)
   return (
     <View flex={1} padding="$6" alignItems="center" justifyContent="center" bg="$background">
         <ScrollView >
@@ -73,6 +76,8 @@ export default function TerminalPanelScreen() {
               <Button backgroundColor={driver_station == 2 ? "$green9" : "#FFFFFF"} borderColor={driver_station == 2 ? "$green9" : "$gray9"} borderWidth={driver_station == 2 ? 0 : 3} size="$4" flex={1} onPress={() => set_driver_station(2)}><H5 color={driver_station == 2 ? "#FFFFFF" : "$gray10"} fontWeight="bold">{alliance === "blue" ? "B2" : "R2"}</H5></Button>
               <Button backgroundColor={driver_station == 3 ? "$green9" : "#FFFFFF"} borderColor={driver_station == 3 ? "$green9" : "$gray9"} borderWidth={driver_station == 3 ? 0 : 3} size="$4" flex={1} onPress={() => set_driver_station(3)}><H5 color={driver_station == 3 ? "#FFFFFF" : "$gray10"} fontWeight="bold">{alliance === "blue" ? "B3" : "R3"}</H5></Button>
             </XStack>
+
+            <Counter value={test} setValue={set_test} label="Test" />
           </YStack> 
 
           {/* Name */}
