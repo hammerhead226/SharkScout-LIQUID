@@ -1,6 +1,6 @@
 import { Link, Tabs } from 'expo-router'
 import { Button, useTheme, H5 } from 'tamagui'
-import { Atom, AudioWaveform } from '@tamagui/lucide-icons'
+import { Home, TerminalSquare, ClipboardPenLine } from '@tamagui/lucide-icons'
 
 export default function TabLayout() {
   const theme = useTheme()
@@ -33,21 +33,42 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <Atom color={color} />,
+          tabBarIcon: ({ color }) => <Home color={color} />,
         }}
       />
       <Tabs.Screen
         name="match-scouting"
         options={{
           title: 'Match Scouting',
-          tabBarIcon: ({ color }) => <AudioWaveform color={color} />,
+          tabBarIcon: ({ color }) => <ClipboardPenLine color={color} />,
         }}
       />
       <Tabs.Screen
         name="terminal-panel"
         options={{
           title: 'Terminal Panel',
-          tabBarIcon: ({ color }) => <AudioWaveform color={color} />,
+          tabBarIcon: ({ color }) => <TerminalSquare color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="match-scouting-auton"
+        options={{
+          title: 'Auton Scouting Screen',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="match-scouting-tele"
+        options={{
+          title: 'Teleop Scouting Screen',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="match-scouting-end"
+        options={{
+          title: 'Endgame Scouting Screen',
+          href: null,
         }}
       />
     </Tabs>
